@@ -15,7 +15,7 @@ list_t *add_node(list_t **head, const char *str, int n)
 	firstnode = malloc(sizeof(list_t));
 	if (firstnode != NULL)
 		return (NULL);
-	_memset(void *)firstnode,  sizeof(list_t);
+	_memset((void *)firstnode, 0,  sizeof(list_t));
 	firstnode->n = n;
 	if (str)
 	{
@@ -49,7 +49,7 @@ list_t *add_node_end(list_t **head, const char *str, int n)
 	 if (firstnode != NULL)
 		 return (NULL);
 
-	_memset(void *)firstnode,  sizeof(list_t);
+	_memset((void *)firstnode, 0, sizeof(list_t));
 	firstnode->n = n;
 	if (str)
 	{
@@ -59,7 +59,7 @@ list_t *add_node_end(list_t **head, const char *str, int n)
 			free(firstnode);
 			return (NULL);
 		}
-		if (lastnode)
+		if (!lastnode)
 		{
 			while (lastnode->next)
 				lastnode = lastnode->next;
@@ -67,8 +67,8 @@ list_t *add_node_end(list_t **head, const char *str, int n)
 		}
 		else
 		       	*head = firstnode;
-		return (firstnode);
 	}
+	return (firstnode);
 }
 /**
  * print_list_str - funtcion that prints a list
@@ -97,7 +97,7 @@ size_t print_list_str(const list_t *string)
  */
 int delete_node_at_index(list_t **head, unsigned int index)
 {
-	list_t *next_node, prev_node;
+	list_t *next_node, *prev_node;
 		unsigned int num = 0;
 
 		if (!head || !*head)
