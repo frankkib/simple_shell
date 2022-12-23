@@ -5,9 +5,9 @@
  * @info: struct address
  * Return: 1 if interactive mode, otherwise 0
  */
-int interactive(cmd_t *info)
+int interactive(cmd_t *cmd)
 {
-	return (isatty(STDIN_FILENO) && info->readfd <= 2);
+	return (isatty(STDIN_FILENO) && cmd->readfd <= 2);
 }
 
 /**
@@ -19,8 +19,8 @@ int interactive(cmd_t *info)
 int is_delim(char c, char *delim)
 {
 	while (*delim)
-	if (*delim++ == c)
-		return (1);
+		if (*delim++ == c)
+			return (1);
 	return (0);
 }
 
@@ -71,4 +71,3 @@ int _atoi(char *s)
 
 	return (output);
 }
-
