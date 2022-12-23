@@ -1,6 +1,6 @@
 #ifndef _SHELL_H_
 #define _SHELL_H_
-
+#include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -45,7 +45,7 @@ extern char **environ;
  */
 typedef struct liststr
 {
-	int num;
+	int n;
 	char *str;
 	struct liststr *next;
 } list_t;

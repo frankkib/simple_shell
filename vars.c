@@ -86,8 +86,10 @@ int replace_alias(cmd_t *info)
 		free(info->argv[0]);
 		p = _strchr(node->str, '=');
 		if (!p)
+		{
 			return (0);
 			p = _strdup(p + 1);
+		}
 		if (!p)
 			return (0);
 		info->argv[0] = p;
