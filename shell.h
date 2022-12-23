@@ -15,7 +15,7 @@
 /* for read/write buffers */
 #define READ_BUF_SIZE 1024
 #define WRITE_BUF_SIZE 1024
-#define FLUSH_BUF -1
+#define BUF_FLUSH -1
 
 /* for command chaining */
 #define CMD_NORM	0
@@ -45,7 +45,7 @@ extern char **environ;
  */
 typedef struct liststr
 {
-	int n;
+	int num;
 	char *str;
 	struct liststr *next;
 } list_t;
