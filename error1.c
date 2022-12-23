@@ -29,17 +29,17 @@ int _erratoi(char *s)
 
 /**
  * print_error - prints error message
- * @info: parameter & return info struct
+ * @info: parameter & return cmd  struct
  * @estr: string containing specified error type
  * Return: 0 if no numbers in string, otherwise -1
  */
-void print_error(cmd_t *info, char *estr)
+void print_error(cmd_t *cmd, char *estr)
 {
-	_eputs(info->fname);
+	_eputs(cmd->fname);
 	_eputs(": ");
-	print_d(info->line_count, STDERR_FILENO);
+	print_d(cmd->line_count, STDERR_FILENO);
 	_eputs(": ");
-	_eputs(info->argv[0]);
+	_eputs(cmd->argv[0]);
 	_eputs(": ");
 	_eputs(estr);
 }

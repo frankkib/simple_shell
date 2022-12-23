@@ -2,29 +2,29 @@
 
 /**
  * get_environ - returns string array copy of our environ
- * @info: Structure containing potential arguments. U
+ * @cmd: Structure containing potential arguments. U
  * Return: Always 0
  */
-char **get_environ(cmd_t *info)
+char **get_environ(cmd_t *cmd)
 {
-	if (!info->environ || info->env_changed)
+	if (!cmd->environ || cmd->env_changed)
 	{
-		info->environ = list_to_strings(info->env);
-		info->env_changed = 0;
+		cmd->environ = list_to_strings(cmd->env);
+		cmd->env_changed = 0;
 	}
 
-	return (info->environ);
+	return (cmd->environ);
 }
 
 /**
  * _unsetenv - Remove an environment variable
- * @info: Structure containing potential arguments
+ * @cmd: Structure containing potential arguments
  * Return: 1 on delete, 0 otherwise
  * @var: the string env var property
  */
-int _unsetenv(cmd_t *info, char *var)
+int _unsetenv(cmd_t *cmd, char *var)
 {
-	list_t *node = info->env;
+	list_t *node = cmd->env;
 	size_t i = 0;
 	char *p;
 
@@ -36,25 +36,25 @@ int _unsetenv(cmd_t *info, char *var)
 		p = starts_with(node->str, var);
 		if (p && *p == '=')
 		{
-			info->env_changed = delete_node_at_index(&(info->env), i);
+			cmd->env_changed = delete_node_at_index(&(cmd->env), i);
 			i = 0;
-			node = info->env;
+			node = cmd->env;
 			continue;
 		}
 		node = node->next;
 		i++;
 	}
-	return (info->env_changed);
+	return (cmd->env_changed);
 }
 
 /**
  * _setenv - Initialize a new environment variable
- * @info: Structure containing potential arguments.
+ * @cmd: Structure containing potential arguments.
  * @var: the string env var property
  * @value: the string env var value
  * Return: Always 0
  */
-int _setenv(cmd_t *info, char *var, char *value)
+int _setenv(cmd_t *cmd, char *var, char *value)
 {
 	char *buf = NULL;
 	list_t *node;
@@ -69,7 +69,7 @@ int _setenv(cmd_t *info, char *var, char *value)
 	_strcpy(buf, var);
 	_strcat(buf, "=");
 	_strcat(buf, value);
-	node = info->env;
+	node = cmd->env;
 	while (node)
 	{
 		p = starts_with(node->str, var);
@@ -77,13 +77,13 @@ int _setenv(cmd_t *info, char *var, char *value)
 		{
 			free(node->str);
 			node->str = buf;
-			info->env_changed = 1;
+			cmd->env_changed = 1;
 			return (0);
 		}
 		node = node->next;
 	}
-	add_node_end(&(info->env), buf, 0);
+	add_node_end(&(cmd->env), buf, 0);
 	free(buf);
-	info->env_changed = 1;
+	cmd->env_changed = 1;
 	return (0);
 }

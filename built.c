@@ -5,9 +5,9 @@
  * @info: Structure containing potential arguments
  * Return: Always 0
  */
-int _myhistory(cmd_t *info)
+int _myhistory(cmd_t *cmd)
 {
-	print_list(info->history);
+	print_list(cmd->history);
 	return (0);
 }
 
@@ -17,7 +17,7 @@ int _myhistory(cmd_t *info)
  * @str: string alias
  * Return: Always 0 on success, 1 on error
  */
-int unset_alias(cmd_t *info, char *str)
+int unset_alias(cmd_t *cmd, char *str)
 {
 	int ret;
 	char *p, c;
@@ -27,8 +27,8 @@ int unset_alias(cmd_t *info, char *str)
 		return (1);
 	c = *p;
 	*p = 0;
-	ret = delete_node_at_index(&(info->alias),
-	get_node_index(info->alias, node_starts_with(info->alias, str, -1)));
+	ret = delete_node_at_index(&(cmd->alias),
+		get_node_index(cmd->alias, node_starts_with(cmd->alias, str, -1)));
 	*p = c;
 	return (ret);
 }
@@ -39,7 +39,7 @@ int unset_alias(cmd_t *info, char *str)
  * @str: string alias
  * Return: Always 0 on success, 1 on error
  */
-int set_alias(cmd_t *info, char *str)
+int set_alias(cmd_t *cmd, char *str)
 {
 	char *p;
 
@@ -47,10 +47,10 @@ int set_alias(cmd_t *info, char *str)
 	if (!p)
 		return (1);
 	if (!*++p)
-		return (unset_alias(info, str));
+		return (unset_alias(cmd, str));
 
-	unset_alias(info, str);
-		return (add_node_end(&(info->alias), str, 0) == NULL);
+	unset_alias(cmd, str);
+	return (add_node_end(&(cmd->alias), str, 0) == NULL);
 }
 
 /**
