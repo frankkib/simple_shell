@@ -21,32 +21,6 @@ char *get_history_file(cmd_t *cmd)
 	return (buf);
 }
 /**
- * write_history - creates a file, or appends to an existing file
- * @cmd: the parameter struct
- * Return: 1 on success, else -1
- */
-int write_history(cmd_t *cmd)
-{
-	ssize_t fd;
-	char *filename = get_history_file(cmd);
-	list_t *node = NULL;
-
-	if (!filename)
-		return (-1);
-	fd = open(filename, O_CREAT | O_TRUNC | O_RDWR, 0644);
-	free(filename);
-	if (fd == -1)
-		return (-1);
-	for (node = cmd->history; node; node = node->next)
-	{
-		_putsfd(node->str, fd);
-		_putsfd('\0', fd);
-	}
-	_putsfd(BUF_FLUSH, fd);
-	close(fd);
-	return (1);
-}
-/**
  * read_history - reads history from file
  * @cmd: the parameter struct
  * Return: histcount on success, 0 otherwise
