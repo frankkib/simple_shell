@@ -32,7 +32,6 @@ int read_history(cmd_t *cmd)
 	struct stat st;
 	char *buf = NULL, *filename = get_history_file(cmd);
 
-
 	if (!filename)
 		return (0);
 	fd = open(filename, O_RDONLY);

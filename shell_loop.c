@@ -63,7 +63,6 @@ int find_builtin(cmd_t *cmd)
 		{NULL, NULL}
 	};
 
-
 	for (i = 0; builtintbl[i].type; i++)
 		if (_strcmp(cmd->argv[0], builtintbl[i].type) == 0)
 		{
@@ -73,7 +72,6 @@ int find_builtin(cmd_t *cmd)
 		}
 	return (built_in_ret);
 }
-
 /**
  * find_cmd - finds a command in PATH
  * @cmd: the parameter & return info struct
