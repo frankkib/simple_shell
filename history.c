@@ -1,11 +1,9 @@
 #include "shell.h"
-
 /**
  * get_history_file - gets the history file
  * @cmd: parameter struct
  * Return: allocated string containg history file
  */
-
 char *get_history_file(cmd_t *cmd)
 {
 	char *buf, *dir;
@@ -22,7 +20,6 @@ char *get_history_file(cmd_t *cmd)
 	_strcat(buf, HIST_FILE);
 	return (buf);
 }
-
 /**
  * write_history - creates a file, or appends to an existing file
  * @cmd: the parameter struct
@@ -42,14 +39,13 @@ int write_history(cmd_t *cmd)
 		return (-1);
 	for (node = cmd->history; node; node = node->next)
 	{
-		_putsfd(node->str, fd);
-		_putsfd('\n', fd);
+		_puts(node->str, fd);
+		_puts(NULL, fd);
 	}
-	_putfd(BUF_FLUSH, fd);
+	_puts(BUF_FLUSH, fd);
 	close(fd);
 	return (1);
 }
-
 /**
  * read_history - reads history from file
  * @cmd: the parameter struct
@@ -100,7 +96,6 @@ int read_history(cmd_t *cmd)
 	renumber_history(cmd);
 	return (cmd->histcount);
 }
-
 /**
  * build_history_list - adds entry to a history linked list
  * @cmd: Structure containing potential arguments. Used to maintain
@@ -120,7 +115,6 @@ int build_history_list(cmd_t *cmd, char *buf, int linecount)
 		cmd->history = node;
 	return (0);
 }
-
 /**
  * renumber_history - renumbers the history linked list after changes
  * @cmd: Structure containing potential arguments. Used to maintain

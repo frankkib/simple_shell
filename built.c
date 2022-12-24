@@ -10,7 +10,6 @@ int _myhistory(cmd_t *cmd)
 	print_list(cmd->history);
 	return (0);
 }
-
 /**
  * unset_alias - sets alias to string
  * @cmd: parameter struct
@@ -32,7 +31,6 @@ int unset_alias(cmd_t *cmd, char *str)
 	*p = c;
 	return (ret);
 }
-
 /**
  * set_alias - sets alias to string
  * @cmd: parameter struct
@@ -52,7 +50,6 @@ int set_alias(cmd_t *cmd, char *str)
 	unset_alias(cmd, str);
 	return (add_node_end(&(cmd->alias), str, 0) == NULL);
 }
-
 /**
  * print_alias - prints alias string
  * @node: the alias node
@@ -76,7 +73,6 @@ int print_alias(list_t *node)
 	}
 	return (1);
 }
-
 /**
  * _myalias - mimics alias builtin
  * @cmd: Structure containing potential arguments
