@@ -51,6 +51,7 @@ int hsh(cmd_t *cmd, char **av)
 int find_builtin(cmd_t *cmd)
 {
 	int i, built_in_ret = -1;
+
 	builtin_table builtintbl[] = {
 		{"exit", _myexit},
 		{"env", _myenv},
@@ -81,6 +82,7 @@ void find_cmd(cmd_t *cmd)
 {
 	char *path = NULL;
 	int i, k;
+
 	cmd->path = cmd->argv[0];
 	if (cmd->linecount_flag == 1)
 	{
