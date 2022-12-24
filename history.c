@@ -39,7 +39,7 @@ int write_history(cmd_t *cmd)
 		return (-1);
 	for (node = cmd->history; node; node = node->next)
 	{
-		_putfile(node->str, fd);
+		_putsfd(node->str, fd);
 		_putsfd('\0', fd);
 	}
 	_putsfd(BUF_FLUSH, fd);
