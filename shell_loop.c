@@ -81,8 +81,6 @@ void find_cmd(cmd_t *cmd)
 {
 	char *path = NULL;
 	int i, k;
-
-
 	cmd->path = cmd->argv[0];
 	if (cmd->linecount_flag == 1)
 	{
@@ -122,7 +120,6 @@ void find_cmd(cmd_t *cmd)
 void fork_cmd(cmd_t *cmd)
 {
 	pid_t child_pid;
-
 
 	child_pid = fork();
 	if (child_pid == -1)
