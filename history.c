@@ -39,10 +39,10 @@ int write_history(cmd_t *cmd)
 		return (-1);
 	for (node = cmd->history; node; node = node->next)
 	{
-		_puts(node->str, fd);
-		_puts(NULL, fd);
+		_putfile(node->str, fd);
+		_putsfd('\0', fd);
 	}
-	_puts(BUF_FLUSH, fd);
+	_putsfd(BUF_FLUSH, fd);
 	close(fd);
 	return (1);
 }
@@ -127,7 +127,7 @@ int renumber_history(cmd_t *cmd)
 
 	while (node)
 	{
-		node->num = i++;
+		node->n = i++;
 		node = node->next;
 	}
 	return (cmd->histcount = i);

@@ -9,7 +9,7 @@
 int is_cmd(cmd_t *cmd, char *path)
 {
 	struct stat st;
-	(void)info;
+	(void)cmd;
 	if (!path || stat(path, &st))
 		return (0);
 
@@ -48,17 +48,17 @@ char *dup_chars(char *pathstr, int start, int stop)
  * @cmd: the cmd to find
  * Return: full path of cmd if found or NULL
  */
-char *find_path(cmd_t *cmd, char *pathstr, char *cmd)
+char *find_path(cmd_t *cmd, char *pathstr, char *trs)
 {
 	int i = 0, curr_pos = 0;
 	char *path;
 
 	if (!pathstr)
 		return (NULL);
-	if ((_strlen(cmd) > 2) && starts_with(cmd, "./"))
+	if ((_strlen(trs) > 2) && starts_with(trs, "./"))
 	{
-		if (is_cmd(cmd, cmd))
-			return (cmd);
+		if (is_cmd(cmd, trs))
+			return (trs);
 	}
 	while (1)
 	{
@@ -66,11 +66,11 @@ char *find_path(cmd_t *cmd, char *pathstr, char *cmd)
 		{
 			path = dup_chars(pathstr, curr_pos, i);
 			if (!*path)
-				_strcat(path, cmd);
+				_strcat(path, trs);
 			else
 			{
 				_strcat(path, "/");
-				_strcat(path, cmd);
+				_strcat(path, trs);
 			}
 			if (is_cmd(cmd, path))
 				return (path);

@@ -45,7 +45,7 @@ extern char **environ;
  */
 typedef struct liststr
 {
-	int num;
+	int n;
 	char *str;
 	struct liststr *next;
 } list_t;
@@ -108,7 +108,6 @@ typedef struct builtin
 	char *type;
 	int (*func)(cmd_t *);
 } builtin_table;
-
 
 /* toem_shloop.c */
 int hsh(cmd_t *, char **);
@@ -212,7 +211,7 @@ int renumber_history(cmd_t *cmd);
 
 /* toem_lists.c */
 list_t *add_node(list_t **, const char *, int);
-list_t *add_node_end(list_t **, const char *, int);
+list_t *add_node_end(list_t **, const char *, int n);
 size_t print_list_str(const list_t *);
 int delete_node_at_index(list_t **, unsigned int);
 void free_list(list_t **);

@@ -65,7 +65,7 @@ void free_cmd(cmd_t *cmd, int all)
 			free_list(&(cmd->alias));
 		ffree(cmd->environ);
 		cmd->environ = NULL;
-		ffree((void **)cmd->cmd_buf);
+		ffree(cmd->cmd_buf);
 		if (cmd->readfd > 2)
 			close(cmd->readfd);
 		_putchar(BUF_FLUSH);

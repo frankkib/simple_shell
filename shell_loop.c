@@ -13,11 +13,11 @@ int hsh(cmd_t *cmd, char **av)
 
 	while (r != -1 && builtin_ret != -2)
 	{
-		clear_info(cmd);
+		clear_cmd(cmd);
 		if (interactive(cmd))
 			_puts("$ ");
 		_eputchar(BUF_FLUSH);
-		r = get_input(info);
+		r = get_input(cmd);
 		if (r != -1)
 		{
 			set_cmd(cmd, av);
@@ -25,7 +25,7 @@ int hsh(cmd_t *cmd, char **av)
 			if (builtin_ret == -1)
 				find_cmd(cmd);
 		}
-		else if (interactive(info))
+		else if (interactive(cmd))
 			_putchar('\n');
 		free_cmd(cmd, 0);
 	}
