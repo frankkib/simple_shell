@@ -2,7 +2,7 @@
 
 /**
  * _myenv - prints current environment
- * @info: Structure containing potential arguments.
+ * @cmd: Structure containing potential arguments.
  * Return: Always 0
  */
 int _myenv(cmd_t *cmd)
@@ -13,7 +13,7 @@ int _myenv(cmd_t *cmd)
 
 /**
  *  _getenv - gets the value of an environ variable
- * @info: Structure containing potential arguments. Used to maintain
+ * @cmd: Structure containing potential arguments. Used to maintain
  * @name: env var name
  * Return: the value
  */
@@ -35,7 +35,7 @@ char *_getenv(cmd_t *cmd, const char *name)
 /**
  * _mysetenv - Initialize a new environment variable,
  *or an existing one
- *@info: Structure containing potential arguments. Used to maintain
+ *@cmd: Structure containing potential arguments. Used to maintain
  *constant function prototype.
  *Return: Always 0
  */
@@ -56,7 +56,7 @@ int _mysetenv(cmd_t *cmd)
 
 /**
  * _myunsetenv - Remove an environment variable
- * @info: Structure containing potential arguments
+ * @cmd: Structure containing potential arguments
  * Return: Always 0
  */
 int _myunsetenv(cmd_t *cmd)
@@ -76,7 +76,7 @@ int _myunsetenv(cmd_t *cmd)
 
 /**
  * populate_env_list - populates env linked list
- * @info: Structure containing potential arguments
+ * @cmd: Structure containing potential arguments
  * Return: Always 0
  */
 int populate_env_list(cmd_t *cmd)

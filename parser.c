@@ -6,7 +6,7 @@
  * @path: path to the file
  * Return: 1 if true, 0 otherwise
  */
-int is_cmd(info_t *cmd, char *path)
+int is_cmd(cmd_t *cmd, char *path)
 {
 	struct stat st;
 	(void)info;
@@ -43,7 +43,7 @@ char *dup_chars(char *pathstr, int start, int stop)
 
 /**
  * find_path - finds this cmd in the PATH string
- * @info: the info struct
+ * @cmd: the info struct
  * @pathstr: the PATH string
  * @cmd: the cmd to find
  * Return: full path of cmd if found or NULL

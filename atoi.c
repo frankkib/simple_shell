@@ -2,7 +2,7 @@
 
 /**
  * interactive - returns true if shell is in interactive mode
- * @info: struct address
+ * @cmd: struct address
  * Return: 1 if interactive mode, otherwise 0
  */
 int interactive(cmd_t *cmd)

@@ -29,7 +29,7 @@ int _erratoi(char *s)
 
 /**
  * print_error - prints error message
- * @info: parameter & return cmd  struct
+ * @cmd: parameter & return cmd  struct
  * @estr: string containing specified error type
  * Return: 0 if no numbers in string, otherwise -1
  */
