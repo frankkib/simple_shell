@@ -35,8 +35,6 @@ int read_history(cmd_t *cmd)
 
 	if (!filename)
 		return (0);
-
-
 	fd = open(filename, O_RDONLY);
 	free(filename);
 	if (fd == -1)
